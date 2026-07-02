@@ -2,18 +2,33 @@ app = "claude-computeruse"
 primary_region = "ams"
 
 [build]
-  image = "ghcr.io/anthropics/anthropic-quickstarts:computer-use-demo-latest"
+  dockerfile = "Dockerfile"
+
+[env]
+  PUBLIC_HOST = "claude-computeruse.fly.dev"
 
 [[services]]
   internal_port = 8080
   protocol = "tcp"
-
   [[services.ports]]
     port = 80
     handlers = ["http"]
-
   [[services.ports]]
     port = 443
+    handlers = ["tls", "http"]
+
+[[services]]
+  internal_port = 8501
+  protocol = "tcp"
+  [[services.ports]]
+    port = 8501
+    handlers = ["tls", "http"]
+
+[[services]]
+  internal_port = 6080
+  protocol = "tcp"
+  [[services.ports]]
+    port = 6080
     handlers = ["tls", "http"]
 
 [[vm]]
