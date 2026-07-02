@@ -1,0 +1,22 @@
+app = "claude-computeruse"
+primary_region = "ams"
+
+[build]
+  image = "ghcr.io/anthropics/anthropic-quickstarts:computer-use-demo-latest"
+
+[[services]]
+  internal_port = 8080
+  protocol = "tcp"
+
+  [[services.ports]]
+    port = 80
+    handlers = ["http"]
+
+  [[services.ports]]
+    port = 443
+    handlers = ["tls", "http"]
+
+[[vm]]
+  memory = "2gb"
+  cpu_kind = "shared"
+  cpus = 1
