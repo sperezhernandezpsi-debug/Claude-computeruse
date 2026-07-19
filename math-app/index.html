@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
-<title>Matemágicas 🦄 — Aprende jugando</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦄</text></svg>">
+<title>Ruby Moon Maths 🌙 — Aprende jugando</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌙</text></svg>">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -14,9 +14,9 @@
 <!-- ONBOARDING -->
 <div id="screen-onboarding" class="screen hidden">
   <div class="card onboarding-card">
-    <div class="mascot-big" id="onb-mascot">🦄</div>
-    <h1>¡Hola! ¿Cómo te llamas?</h1>
-    <input id="onb-name" class="text-input" type="text" maxlength="16" placeholder="Escribe tu nombre">
+    <div class="mascot-big" id="onb-mascot">🌙</div>
+    <h1>¡Hola, Ruby! 🌙</h1>
+    <p class="onb-sub">¡Bienvenida a tu aventura mágica de matemáticas!</p>
     <h2>Elige tu compañero</h2>
     <div class="avatar-grid" id="onb-avatars">
       <button class="avatar-choice" data-avatar="🦄">🦄</button>
@@ -28,7 +28,7 @@
       <button class="avatar-choice" data-avatar="🐸">🐸</button>
       <button class="avatar-choice" data-avatar="🦁">🦁</button>
     </div>
-    <button class="btn btn-primary btn-big" id="onb-start">¡Vamos a jugar! 🚀</button>
+    <button class="btn btn-primary btn-big" id="onb-start">¡Vamos a jugar, Ruby! 🚀</button>
   </div>
 </div>
 
@@ -36,15 +36,15 @@
 <div id="screen-home" class="screen hidden">
   <header class="topbar">
     <div class="player-badge">
-      <span id="home-avatar" class="avatar-emoji">🦄</span>
-      <span id="home-name" class="player-name">Amigo/a</span>
+      <span id="home-avatar" class="avatar-emoji">🌙</span>
+      <span id="home-name" class="player-name">Ruby</span>
     </div>
     <div class="stars-badge">⭐ <span id="home-stars">0</span></div>
     <button class="icon-btn" id="btn-parent" title="Zona de familia">⚙️</button>
   </header>
 
   <main class="home-main">
-    <h1 class="app-title">Matemágicas <span class="wiggle">✨</span></h1>
+    <h1 class="app-title">Ruby Moon Maths <span class="wiggle">🌙</span></h1>
     <p class="mascot-say" id="home-message">¡Elige un juego para empezar la aventura!</p>
 
     <div class="mode-grid">
@@ -153,7 +153,7 @@
 <div id="screen-parent" class="screen hidden">
   <div class="card parent-card">
     <button class="btn-back" id="parent-back">← Volver</button>
-    <h1>Progreso de <span id="parent-name">tu hijo/a</span></h1>
+    <h1>Progreso de <span id="parent-name">Ruby</span></h1>
     <div class="parent-stats" id="parent-stats"></div>
     <div class="parent-controls">
       <label class="switch-row">

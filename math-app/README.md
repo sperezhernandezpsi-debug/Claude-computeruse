@@ -1,6 +1,6 @@
-# Matemágicas 🦄✨
+# Ruby Moon Maths 🌙✨
 
-App web para aprender matemáticas, pensada para niñas y niños de unos 7 años.
+App web para aprender matemáticas, creada especialmente para Ruby (7 años).
 Funciona en el navegador (móvil, tablet u ordenador), no necesita instalación,
 conexión a internet ni servidor: son solo archivos HTML, CSS y JavaScript.
 
@@ -32,14 +32,17 @@ base de datos.
   desbloqueando según el progreso para acompañar el aprendizaje.
 - **Apoyo visual**: en los niveles fáciles las sumas/restas/conteo se muestran
   con dibujos (emojis) para contar, no solo números.
-- **Respuestas de opción múltiple** con botones grandes, pensado para que un
-  niño de 7 años juegue solo/a sin necesitar teclado.
+- **Respuestas de opción múltiple** con botones grandes, pensado para que
+  Ruby juegue sola sin necesitar teclado.
+- **Ánimo personalizado con su nombre**: la mascota anima a Ruby por su
+  nombre en el saludo, al acertar o fallar cada pregunta, en los resultados
+  de cada ronda y al ganar una insignia.
 - **Sonidos y animaciones** (generados por código, sin archivos de audio) al
   acertar, fallar o completar una ronda, más confeti al terminar bien.
 - **Estrellas, insignias y mascota personalizable** para motivar sin depender
   de premios externos.
-- **Progreso guardado en el dispositivo** (localStorage): nombre, avatar,
-  estrellas, mejores puntuaciones e insignias por juego.
+- **Progreso guardado en el dispositivo** (localStorage): avatar, estrellas,
+  mejores puntuaciones e insignias por juego.
 - **Zona de familia** (icono ⚙️ en la esquina): protegida con una pequeña
   cuenta (multiplicación) para que solo un adulto entre. Desde ahí se ve el
   progreso por juego, se puede silenciar el sonido o borrar el progreso.

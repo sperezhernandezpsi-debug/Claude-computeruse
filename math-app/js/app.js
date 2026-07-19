@@ -1,7 +1,8 @@
-// Lógica principal de Matemágicas.
+// Lógica principal de Ruby Moon Maths.
 (() => {
-  const STORAGE_KEY = 'matemagicas_profile_v1';
+  const STORAGE_KEY = 'ruby_moon_maths_profile_v1';
   const QUESTIONS_PER_ROUND = 10;
+  const CHILD_NAME = 'Ruby';
 
   const MODE_LABELS = {
     sumas: 'Sumas',
@@ -17,24 +18,24 @@
 
   const MASCOT_MESSAGES = {
     great: [
-      '¡Increíble! ¡Eres un genio de las mates! 🌟',
-      '¡Wow! ¡Lo has hecho perfecto! 🎉',
-      '¡Eres una estrella de las matemáticas! ⭐',
+      `¡Increíble, ${CHILD_NAME}! ¡Eres un genio de las mates! 🌟`,
+      `¡Wow, ${CHILD_NAME}! ¡Lo has hecho perfecto! 🎉`,
+      `¡Eres una estrella de las matemáticas, ${CHILD_NAME}! ⭐`,
     ],
     good: [
-      '¡Muy bien hecho! ¡Sigue así! 💪',
-      '¡Buen trabajo! Cada vez lo haces mejor. 🙂',
-      '¡Genial! Estás aprendiendo un montón. 📚',
+      `¡Muy bien hecho, ${CHILD_NAME}! ¡Sigue así! 💪`,
+      `¡Buen trabajo, ${CHILD_NAME}! Cada vez lo haces mejor. 🙂`,
+      `¡Genial, ${CHILD_NAME}! Estás aprendiendo un montón. 📚`,
     ],
     ok: [
-      '¡Buen intento! Practiquemos un poco más. 🌱',
-      '¡Vas por buen camino! Inténtalo otra vez. 💫',
-      '¡Casi! Con práctica lo conseguirás. 🍀',
+      `¡Buen intento, ${CHILD_NAME}! Practiquemos un poco más. 🌱`,
+      `¡Vas por buen camino, ${CHILD_NAME}! Inténtalo otra vez. 💫`,
+      `¡Casi, ${CHILD_NAME}! Con práctica lo conseguirás. 🍀`,
     ],
     low: [
-      'No pasa nada, ¡todos aprendemos practicando! 🤗',
-      '¡Sigue intentándolo, tú puedes! 💜',
-      'Cada error nos ayuda a aprender más. 🌈',
+      `No pasa nada, ${CHILD_NAME}, ¡todos aprendemos practicando! 🤗`,
+      `¡Sigue intentándolo, ${CHILD_NAME}, tú puedes! 💜`,
+      `Cada error nos ayuda a aprender más, ${CHILD_NAME}. 🌈`,
     ],
   };
 
@@ -42,11 +43,11 @@
     { id: 'primera_estrella', emoji: '🌟', name: 'Primera estrella', cond: p => p.totalStars >= 1 },
     { id: 'diez_estrellas', emoji: '✨', name: '10 estrellas', cond: p => p.totalStars >= 10 },
     { id: 'treinta_estrellas', emoji: '💫', name: '30 estrellas', cond: p => p.totalStars >= 30 },
-    { id: 'rey_sumas', emoji: '➕', name: 'Reina/Rey de las sumas', cond: p => (p.stats.sumas.dificil?.bestStars || 0) >= 3 },
-    { id: 'rey_restas', emoji: '➖', name: 'Reina/Rey de las restas', cond: p => (p.stats.restas.dificil?.bestStars || 0) >= 3 },
-    { id: 'rey_multi', emoji: '✖️', name: 'Maestro/a de la tabla', cond: p => (p.stats.multiplicacion.dificil?.bestStars || 0) >= 3 },
+    { id: 'rey_sumas', emoji: '➕', name: 'Reina de las sumas', cond: p => (p.stats.sumas.dificil?.bestStars || 0) >= 3 },
+    { id: 'rey_restas', emoji: '➖', name: 'Reina de las restas', cond: p => (p.stats.restas.dificil?.bestStars || 0) >= 3 },
+    { id: 'rey_multi', emoji: '✖️', name: 'Maestra de la tabla', cond: p => (p.stats.multiplicacion.dificil?.bestStars || 0) >= 3 },
     { id: 'racha_5', emoji: '🔥', name: 'Racha de 5', cond: p => p.maxStreak >= 5 },
-    { id: 'todas_las_estrellas', emoji: '👑', name: 'Campeón/a total', cond: p => modesAtMaxStars(p) },
+    { id: 'todas_las_estrellas', emoji: '👑', name: 'Campeona total', cond: p => modesAtMaxStars(p) },
   ];
 
   function modesAtMaxStars(p) {
@@ -60,7 +61,7 @@
       stats[m] = { facil: emptyModeStat(), medio: emptyModeStat(), dificil: emptyModeStat() };
     });
     return {
-      name: '',
+      name: CHILD_NAME,
       avatar: '🦄',
       totalStars: 0,
       maxStreak: 0,
@@ -117,12 +118,15 @@
       SoundFX.playTap();
     });
   });
-  document.querySelector('.avatar-choice')?.classList.add('selected');
+  const firstAvatarBtn = document.querySelector('.avatar-choice');
+  if (firstAvatarBtn) {
+    firstAvatarBtn.classList.add('selected');
+    chosenAvatar = firstAvatarBtn.dataset.avatar;
+    document.getElementById('onb-mascot').textContent = chosenAvatar;
+  }
 
   document.getElementById('onb-start').addEventListener('click', () => {
-    const name = document.getElementById('onb-name').value.trim();
     profile = defaultProfile();
-    profile.name = name || 'Campeón/a';
     profile.avatar = chosenAvatar;
     saveProfile();
     SoundFX.playCorrect();
@@ -157,9 +161,10 @@
 
   function homeGreeting() {
     const greetings = [
-      `¡Hola, ${profile.name}! ¿Listo/a para una aventura matemática?`,
+      `¡Hola, ${profile.name}! ¿Lista para una aventura matemática? 🌙`,
       `¡Qué alegría verte, ${profile.name}! Elige un juego.`,
       `${profile.name}, ¡hoy vamos a aprender jugando! 🎈`,
+      `Brilla como la luna, ${profile.name}. ¡Tú puedes! 🌙✨`,
     ];
     return greetings[randInt(0, greetings.length - 1)];
   }
@@ -289,8 +294,18 @@
   }
 
   function pickFeedback(correct) {
-    const yes = ['¡Correcto! 🎉', '¡Genial! ✅', '¡Perfecto! 👏', '¡Así se hace! 🌟'];
-    const no = ['¡Casi! 💪', 'Sigue intentando 🌈', 'La próxima seguro 🍀', '¡No te rindas! 💜'];
+    const yes = [
+      `¡Correcto, ${CHILD_NAME}! 🎉`,
+      `¡Genial, ${CHILD_NAME}! ✅`,
+      `¡Perfecto, ${CHILD_NAME}! 👏`,
+      `¡Así se hace, ${CHILD_NAME}! 🌟`,
+    ];
+    const no = [
+      `¡Casi, ${CHILD_NAME}! 💪`,
+      `Sigue intentando, ${CHILD_NAME} 🌈`,
+      `La próxima seguro, ${CHILD_NAME} 🍀`,
+      `¡No te rindas, ${CHILD_NAME}! 💜`,
+    ];
     const arr = correct ? yes : no;
     return arr[randInt(0, arr.length - 1)];
   }
@@ -325,7 +340,7 @@
   function showResults(correct, total, stars, isNewBestStars) {
     document.getElementById('res-mascot').textContent = profile.avatar;
     document.getElementById('res-title').textContent =
-      stars === 3 ? '¡Perfecto!' : stars === 2 ? '¡Muy bien!' : stars === 1 ? '¡Buen intento!' : '¡Sigue practicando!';
+      stars === 3 ? `¡Perfecto, ${CHILD_NAME}!` : stars === 2 ? `¡Muy bien, ${CHILD_NAME}!` : stars === 1 ? `¡Buen intento, ${CHILD_NAME}!` : `¡Sigue practicando, ${CHILD_NAME}!`;
     document.getElementById('res-score').textContent = `${correct} / ${total} aciertos`;
     document.getElementById('res-stars').textContent = '⭐'.repeat(stars) + '☆'.repeat(3 - stars);
 
@@ -337,7 +352,7 @@
     const badgeEl = document.getElementById('res-badge');
     if (newBadges.length > 0) {
       badgeEl.classList.remove('hidden');
-      badgeEl.innerHTML = `¡Nueva insignia! ${newBadges.map(b => `${b.emoji} ${b.name}`).join(', ')}`;
+      badgeEl.innerHTML = `¡${CHILD_NAME}, has ganado una insignia nueva! ${newBadges.map(b => `${b.emoji} ${b.name}`).join(', ')}`;
     } else {
       badgeEl.classList.add('hidden');
     }

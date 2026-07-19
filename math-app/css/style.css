@@ -130,6 +130,7 @@ body {
 
 /* ---------- Onboarding ---------- */
 .onboarding-card h1 { margin-bottom: 4px; font-size: 1.5rem; }
+.onb-sub { color: #6b7280; margin: 0 0 4px; font-weight: 600; }
 .onboarding-card h2 { font-size: 1.1rem; margin: 18px 0 8px; color: #6b7280; }
 .mascot-big { font-size: 4.5rem; margin-bottom: 6px; animation: bounce 1.6s infinite ease-in-out; }
 
