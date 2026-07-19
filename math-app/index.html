@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+<title>Matemágicas 🦄 — Aprende jugando</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦄</text></svg>">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<canvas id="confetti-canvas"></canvas>
+
+<!-- ONBOARDING -->
+<div id="screen-onboarding" class="screen hidden">
+  <div class="card onboarding-card">
+    <div class="mascot-big" id="onb-mascot">🦄</div>
+    <h1>¡Hola! ¿Cómo te llamas?</h1>
+    <input id="onb-name" class="text-input" type="text" maxlength="16" placeholder="Escribe tu nombre">
+    <h2>Elige tu compañero</h2>
+    <div class="avatar-grid" id="onb-avatars">
+      <button class="avatar-choice" data-avatar="🦄">🦄</button>
+      <button class="avatar-choice" data-avatar="🐉">🐉</button>
+      <button class="avatar-choice" data-avatar="🐱">🐱</button>
+      <button class="avatar-choice" data-avatar="🐶">🐶</button>
+      <button class="avatar-choice" data-avatar="🐼">🐼</button>
+      <button class="avatar-choice" data-avatar="🦊">🦊</button>
+      <button class="avatar-choice" data-avatar="🐸">🐸</button>
+      <button class="avatar-choice" data-avatar="🦁">🦁</button>
+    </div>
+    <button class="btn btn-primary btn-big" id="onb-start">¡Vamos a jugar! 🚀</button>
+  </div>
+</div>
+
+<!-- HOME -->
+<div id="screen-home" class="screen hidden">
+  <header class="topbar">
+    <div class="player-badge">
+      <span id="home-avatar" class="avatar-emoji">🦄</span>
+      <span id="home-name" class="player-name">Amigo/a</span>
+    </div>
+    <div class="stars-badge">⭐ <span id="home-stars">0</span></div>
+    <button class="icon-btn" id="btn-parent" title="Zona de familia">⚙️</button>
+  </header>
+
+  <main class="home-main">
+    <h1 class="app-title">Matemágicas <span class="wiggle">✨</span></h1>
+    <p class="mascot-say" id="home-message">¡Elige un juego para empezar la aventura!</p>
+
+    <div class="mode-grid">
+      <button class="mode-tile mode-sumas" data-mode="sumas">
+        <span class="mode-emoji">➕</span>
+        <span class="mode-name">Sumas</span>
+        <span class="mode-stars" id="stars-sumas"></span>
+      </button>
+      <button class="mode-tile mode-restas" data-mode="restas">
+        <span class="mode-emoji">➖</span>
+        <span class="mode-name">Restas</span>
+        <span class="mode-stars" id="stars-restas"></span>
+      </button>
+      <button class="mode-tile mode-multiplicacion" data-mode="multiplicacion">
+        <span class="mode-emoji">✖️</span>
+        <span class="mode-name">Multiplicar</span>
+        <span class="mode-stars" id="stars-multiplicacion"></span>
+      </button>
+      <button class="mode-tile mode-comparar" data-mode="comparar">
+        <span class="mode-emoji">⚖️</span>
+        <span class="mode-name">Comparar</span>
+        <span class="mode-stars" id="stars-comparar"></span>
+      </button>
+      <button class="mode-tile mode-conteo" data-mode="conteo">
+        <span class="mode-emoji">🔢</span>
+        <span class="mode-name">Contar</span>
+        <span class="mode-stars" id="stars-conteo"></span>
+      </button>
+      <button class="mode-tile mode-formas" data-mode="formas">
+        <span class="mode-emoji">🔺</span>
+        <span class="mode-name">Formas</span>
+        <span class="mode-stars" id="stars-formas"></span>
+      </button>
+    </div>
+
+    <div class="badges-row" id="badges-row"></div>
+  </main>
+</div>
+
+<!-- DIFFICULTY SELECT -->
+<div id="screen-difficulty" class="screen hidden">
+  <div class="card difficulty-card">
+    <button class="btn-back" id="diff-back">← Volver</button>
+    <h1 id="diff-title">Elige tu nivel</h1>
+    <div class="difficulty-list">
+      <button class="btn btn-diff" data-diff="facil">
+        <span class="diff-emoji">🌱</span> Fácil
+      </button>
+      <button class="btn btn-diff" data-diff="medio">
+        <span class="diff-emoji">🌟</span> Medio
+      </button>
+      <button class="btn btn-diff" data-diff="dificil">
+        <span class="diff-emoji">🔥</span> Difícil
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- GAME -->
+<div id="screen-game" class="screen hidden">
+  <header class="game-topbar">
+    <button class="icon-btn" id="btn-quit">✕</button>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar" id="game-progress"></div>
+    </div>
+    <div class="streak-badge">🔥 <span id="game-streak">0</span></div>
+  </header>
+
+  <main class="game-main">
+    <div class="visual-area" id="game-visual"></div>
+    <h2 class="question-text" id="game-question"></h2>
+    <div class="choices-grid" id="game-choices"></div>
+    <div class="feedback-msg" id="game-feedback"></div>
+  </main>
+</div>
+
+<!-- RESULTS -->
+<div id="screen-results" class="screen hidden">
+  <div class="card results-card">
+    <div class="mascot-big" id="res-mascot">🦄</div>
+    <h1 id="res-title">¡Muy bien!</h1>
+    <p id="res-score" class="res-score">8 / 10</p>
+    <div class="stars-earned" id="res-stars">⭐⭐⭐</div>
+    <p class="res-message" id="res-message"></p>
+    <div id="res-badge" class="badge-popup hidden"></div>
+    <div class="results-actions">
+      <button class="btn btn-primary btn-big" id="res-again">Jugar otra vez</button>
+      <button class="btn btn-secondary btn-big" id="res-home">Volver al mapa</button>
+    </div>
+  </div>
+</div>
+
+<!-- PARENT ZONE -->
+<div id="screen-parent-gate" class="screen hidden">
+  <div class="card">
+    <button class="btn-back" id="gate-back">← Volver</button>
+    <h1>Zona de familia</h1>
+    <p>Para continuar, resuelve esta operación:</p>
+    <p class="gate-question" id="gate-question"></p>
+    <input id="gate-input" class="text-input" type="tel" inputmode="numeric" placeholder="Respuesta">
+    <button class="btn btn-primary btn-big" id="gate-submit">Entrar</button>
+    <p class="gate-error hidden" id="gate-error">Respuesta incorrecta, inténtalo de nuevo.</p>
+  </div>
+</div>
+
+<div id="screen-parent" class="screen hidden">
+  <div class="card parent-card">
+    <button class="btn-back" id="parent-back">← Volver</button>
+    <h1>Progreso de <span id="parent-name">tu hijo/a</span></h1>
+    <div class="parent-stats" id="parent-stats"></div>
+    <div class="parent-controls">
+      <label class="switch-row">
+        <span>🔊 Sonido</span>
+        <input type="checkbox" id="parent-sound-toggle">
+      </label>
+      <button class="btn btn-danger" id="parent-reset">Borrar progreso</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/sound.js"></script>
+<script src="js/confetti.js"></script>
+<script src="js/questions.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
