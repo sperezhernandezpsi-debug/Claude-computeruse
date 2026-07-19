@@ -6,7 +6,14 @@ conexión a internet ni servidor: son solo archivos HTML, CSS y JavaScript.
 
 ## Cómo abrirla
 
-**Opción más simple:** haz doble clic en `index.html` y se abrirá en el navegador.
+**Opción más simple (un solo archivo):** haz doble clic en
+`ruby-moon-maths-standalone.html`. Es la app entera —HTML, CSS, JS y
+tipografía— empaquetada en un único archivo portable, sin dependencias
+externas ni conexión a internet. Ábrelo con cualquier navegador (Chrome,
+Safari, Edge...) en el móvil, tablet u ordenador.
+
+**Opción para desarrollo (archivos separados):** haz doble clic en
+`index.html`.
 
 **Opción recomendada (mejor compatibilidad, sobre todo en móvil):** sirve la
 carpeta con un servidor local:
@@ -51,14 +58,20 @@ base de datos.
 
 ```
 math-app/
-├── index.html        Estructura de todas las pantallas
-├── css/style.css      Estilos (colores, animaciones, responsive)
+├── ruby-moon-maths-standalone.html   Todo en un archivo (recomendado para abrir directamente)
+├── index.html                         Estructura de todas las pantallas
+├── css/style.css                       Estilos (colores, animaciones, responsive)
 └── js/
-    ├── sound.js        Efectos de sonido (Web Audio API)
-    ├── confetti.js      Animación de confeti (canvas)
-    ├── questions.js      Generador de preguntas por juego/dificultad
-    └── app.js          Lógica de la app: pantallas, partidas, progreso
+    ├── sound.js                         Efectos de sonido (Web Audio API)
+    ├── confetti.js                       Animación de confeti (canvas)
+    ├── questions.js                       Generador de preguntas por juego/dificultad
+    └── app.js                           Lógica de la app: pantallas, partidas, progreso
 ```
+
+`ruby-moon-maths-standalone.html` se genera a partir de los archivos
+anteriores incrustando el CSS, el JS y la tipografía. Si editas
+`index.html`/`css`/`js`, regenera ese archivo antes de volver a
+compartirlo (no se actualiza solo).
 
 No hay dependencias externas que instalar (solo una tipografía opcional de
 Google Fonts que, si no hay internet, cae a una tipografía del sistema sin
