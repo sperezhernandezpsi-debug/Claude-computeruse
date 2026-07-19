@@ -238,6 +238,9 @@ body {
 .mode-comparar { background: linear-gradient(160deg, #4ade80, #16a34a); }
 .mode-conteo { background: linear-gradient(160deg, #f472b6, #db2777); }
 .mode-formas { background: linear-gradient(160deg, #2dd4bf, #0d9488); }
+.mode-tabla100 { background: linear-gradient(160deg, #fbbf24, #d97706); }
+
+.mode-grid > .mode-tile:last-child:nth-child(odd) { grid-column: 1 / -1; }
 
 .badges-row {
   display: flex;
@@ -324,6 +327,41 @@ body {
 .visual-groups { letter-spacing: 2px; }
 .op-sep { font-size: 1rem; color: #9ca3af; margin: 0 4px; vertical-align: middle; }
 .count-grid { font-size: 1.6rem; line-height: 1.7; }
+
+/* Suma en columna con llevada */
+.column-sum {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin: 4px auto 10px;
+  width: max-content;
+  font-variant-numeric: tabular-nums;
+}
+.col-row { display: grid; grid-template-columns: 26px 40px 40px; }
+.col-op { font-size: 1.4rem; font-weight: 800; color: var(--purple); }
+.col-cell { font-size: 1.8rem; font-weight: 800; text-align: center; color: var(--text-dark); }
+.carry-row .col-cell { min-height: 1.1em; }
+.carry-mark { font-size: 1.05rem; color: #dc2626; align-self: flex-start; }
+.col-line { width: 106px; border-top: 4px solid var(--text-dark); margin-top: 2px; }
+
+/* Tabla del 100 */
+.hundred-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 44px);
+  gap: 5px;
+  margin: 0 auto 4px;
+  width: max-content;
+}
+.hundred-cell {
+  background: #f3f4f6;
+  border-radius: 10px;
+  padding: 9px 0;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+.hundred-cell.empty { visibility: hidden; }
+.hundred-cell.center { background: var(--purple); color: #fff; box-shadow: 0 4px 0 #6d28d9; }
 
 .question-text {
   font-size: 2.2rem;

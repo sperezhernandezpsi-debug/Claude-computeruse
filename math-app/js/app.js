@@ -11,6 +11,7 @@
     comparar: 'Comparar',
     conteo: 'Contar',
     formas: 'Formas',
+    tabla100: 'Tabla del 100',
   };
 
   const DIFF_LABELS = { facil: 'Fácil', medio: 'Medio', dificil: 'Difícil' };
